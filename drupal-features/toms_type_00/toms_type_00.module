@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Toms Type 00 feature.
+ */
+
+include_once 'toms_type_00.features.inc';
