@@ -1,18 +1,18 @@
 <?php
 /**
  * @file
- * course.features.inc
+ * course_type.features.inc
  */
 
 /**
  * Implements hook_node_info().
  */
-function course_node_info() {
+function course_type_node_info() {
   $items = array(
-    'course' => array(
-      'name' => t('Course'),
+    'course_type' => array(
+      'name' => t('Course Type'),
       'base' => 'node_content',
-      'description' => t('A training or educational course.'),
+      'description' => t('A type of training or educational course.'),
       'has_title' => '1',
       'title_label' => t('Course Title'),
       'help' => '',

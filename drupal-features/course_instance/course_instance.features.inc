@@ -1,20 +1,20 @@
 <?php
 /**
  * @file
- * course.features.inc
+ * course_instance.features.inc
  */
 
 /**
  * Implements hook_node_info().
  */
-function course_node_info() {
+function course_instance_node_info() {
   $items = array(
-    'course' => array(
-      'name' => t('Course'),
+    'course_instance' => array(
+      'name' => t('Course Instance'),
       'base' => 'node_content',
-      'description' => t('A training or educational course.'),
+      'description' => t('An instance of a training or educational course.'),
       'has_title' => '1',
-      'title_label' => t('Course Title'),
+      'title_label' => t('Course Instance Description (e.g. Course Name and Date)'),
       'help' => '',
     ),
   );
