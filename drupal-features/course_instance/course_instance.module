@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Course Instance feature.
- */
-
-include_once 'course_instance.features.inc';
