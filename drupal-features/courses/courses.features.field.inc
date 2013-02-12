@@ -10,6 +10,245 @@
 function courses_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-course_instance-field_course_contributors'.
+  $fields['node-course_instance-field_course_contributors'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_course_contributors',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'direction' => 'ASC',
+            'property' => 'title',
+            'type' => 'property',
+          ),
+          'target_bundles' => array(
+            'team_member' => 'team_member',
+            'trainer' => 'trainer',
+          ),
+        ),
+        'target_type' => 'node',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'course_instance',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Use this field to specify Course Contributors who are not Course Leaders. All contributors should exist as nodes of type Trainer or Team Member.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 7,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_course_contributors',
+      'label' => 'Course Contributors',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '31',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-course_instance-field_course_eventbrite_url'.
+  $fields['node-course_instance-field_course_eventbrite_url'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_course_eventbrite_url',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'course_instance',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Enter the Eventbrite URL here, in the form http://www.eventbrite.co.uk/event/5449726278 (numeric ID) or http://foobarrubbishevent.eventbrite.co.uk/ (custom subdomain)',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 5,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_course_eventbrite_url',
+      'label' => 'Eventbrite URL',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '96',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '-3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-course_instance-field_course_leaders'.
+  $fields['node-course_instance-field_course_leaders'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_course_leaders',
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'direction' => 'ASC',
+            'property' => 'title',
+            'type' => 'property',
+          ),
+          'target_bundles' => array(
+            'team_member' => 'team_member',
+            'trainer' => 'trainer',
+          ),
+        ),
+        'target_type' => 'node',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'course_instance',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Use this field to specify the Course Leaders, each of which should exist as a node of type Trainer or Team Member.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 6,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_course_leaders',
+      'label' => 'Course Leader(s)',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '30',
+      ),
+    ),
+  );
+
   // Exported field: 'node-course_instance-field_course_materials_location'.
   $fields['node-course_instance-field_course_materials_location'] = array(
     'field_config' => array(
@@ -308,7 +547,7 @@ function courses_field_default_fields() {
           'year_range' => '-9:+9',
         ),
         'type' => 'date_select',
-        'weight' => '31',
+        'weight' => '29',
       ),
     ),
   );
@@ -853,28 +1092,327 @@ function courses_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-trainer-field_trainer_bio'.
+  $fields['node-trainer-field_trainer_bio'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_trainer_bio',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'trainer',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Use this field to give a bio of the trainer.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 4,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_trainer_bio',
+      'label' => 'Bio',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '33',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-trainer-field_trainer_photo'.
+  $fields['node-trainer-field_trainer_photo'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_trainer_photo',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'image',
+    ),
+    'field_instance' => array(
+      'bundle' => 'trainer',
+      'deleted' => '0',
+      'description' => 'A photo of the trainer',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => 3,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_trainer_photo',
+      'label' => 'Photo',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 1,
+        'default_image' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'png gif jpg jpeg',
+        'max_filesize' => '1 MB',
+        'max_resolution' => '640x640',
+        'min_resolution' => '200x200',
+        'title_field' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'image',
+        'settings' => array(
+          'preview_image_style' => 'thumbnail',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'image_image',
+        'weight' => '32',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-trainer-field_trainer_suffix'.
+  $fields['node-trainer-field_trainer_suffix'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_trainer_suffix',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '32',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'trainer',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Use this field to specify any suffixes of the trainer, e.g. FRS. Include more than one if required, separated by spaces.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 2,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_trainer_suffix',
+      'label' => 'Suffix',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '16',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '31',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-trainer-field_trainer_title'.
+  $fields['node-trainer-field_trainer_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_trainer_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '32',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'trainer',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The trainer\'s title, e.g. Ms, Mr, Dr, Professor. Do not use full stops (i.e. use \'Dr\' not \'Dr.\'). If multiple titles then include all in the one field but separate with spaces and use the correct ordering, e.g. "Professor Sir". Avoid abbreviations (e.g. Prof) although \'Dr\' is acceptable.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 1,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_trainer_title',
+      'label' => 'Title',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '16',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '-6',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('A photo of the trainer');
+  t('Bio');
   t('Course Content');
+  t('Course Contributors');
+  t('Course Leader(s)');
   t('Course Materials Info');
   t('Course Materials Location');
   t('Course Prerequisites');
   t('Course Requirements');
   t('Course Summary');
   t('Course Type');
+  t('Enter the Eventbrite URL here, in the form http://www.eventbrite.co.uk/event/5449726278 (numeric ID) or http://foobarrubbishevent.eventbrite.co.uk/ (custom subdomain)');
+  t('Eventbrite URL');
   t('Intended Audience');
   t('Learning Outcomes');
+  t('Photo');
   t('Practicalities');
   t('Select the Course Type for this Course Instance.');
   t('Start/End Date/Time');
+  t('Suffix');
+  t('The trainer\'s title, e.g. Ms, Mr, Dr, Professor. Do not use full stops (i.e. use \'Dr\' not \'Dr.\'). If multiple titles then include all in the one field but separate with spaces and use the correct ordering, e.g. "Professor Sir". Avoid abbreviations (e.g. Prof) although \'Dr\' is acceptable.');
+  t('Title');
   t('Use this field to describe the availability, licensing terms, or other features of the course materials. A link(s) to the course materials should not be provided here; use the Course Materials Locations field instead.');
   t('Use this field to detail what participants will have learned by the end of the course, in the form of a bullet-pointed list. E.g. list outcomes that complete the sentence "By the end of the course you will (have)..."');
+  t('Use this field to give a bio of the trainer.');
   t('Use this field to give an outline of the course content, e.g. as a bullet-pointed list of topics.');
   t('Use this field to give the location(s) (i.e. URLs) of course materials, one URL per field. Add additional fields for additional URLs.');
   t('Use this field to provide a bullet-pointed list of the groups for whom the course is intended, i.e. in answer to the question "Who is this course for?"');
   t('Use this field to provide a summary of the course.');
+  t('Use this field to specify Course Contributors who are not Course Leaders. All contributors should exist as nodes of type Trainer or Team Member.');
   t('Use this field to specify any practicalities related to a course or event, e.g. availability of wifi and refreshments, timing of breaks, how to get into the venue on arrival, etc.');
+  t('Use this field to specify any suffixes of the trainer, e.g. FRS. Include more than one if required, separated by spaces.');
   t('Use this field to specify practical requirements for attending the course, e.g. what equipment to bring. Contents of this field should be distinct from the learning prerequisites for attending the course.');
+  t('Use this field to specify the Course Leaders, each of which should exist as a node of type Trainer or Team Member.');
   t('Use this field to specify the learning/knowledge prerequisites for attending the course, e.g. prerequisite knowledge/expertise, previous courses that should have been attended before this one.');
   t('Use this field to specify the name/number of the room in which the course/event will take place, e.g. "Open Two".');
   t('Use this field to state when a given instance of a course begins and ends. End date is required.');

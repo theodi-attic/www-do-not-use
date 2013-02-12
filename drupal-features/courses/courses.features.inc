@@ -25,6 +25,14 @@ function courses_node_info() {
       'title_label' => t('Course Title'),
       'help' => '',
     ),
+    'trainer' => array(
+      'name' => t('Trainer'),
+      'base' => 'node_content',
+      'description' => t('Info about a trainer leading or contributing to a training course/seminar, who is *not* already an ODI team member.'),
+      'has_title' => '1',
+      'title_label' => t('Name'),
+      'help' => '',
+    ),
   );
   return $items;
 }
