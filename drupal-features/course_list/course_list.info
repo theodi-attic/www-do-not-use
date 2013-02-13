@@ -1,0 +1,11 @@
+name = Course List
+description = A feature bundling the Course List view
+core = 7.x
+package = Courses
+version = 7.x-1.0-beta01
+project = course_list
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = course_list
+features_exclude[dependencies][views] = views
+project path = /tmp/features
