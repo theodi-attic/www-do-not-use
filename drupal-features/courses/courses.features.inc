@@ -14,7 +14,7 @@ function courses_node_info() {
       'base' => 'node_content',
       'description' => t('An instance of a training or educational course.'),
       'has_title' => '1',
-      'title_label' => t('Course Instance Description (e.g. Course Name and Date)'),
+      'title_label' => t('Course Instance Description, e.g. Course Name (YYYY-MM-DD)'),
       'help' => '',
     ),
     'course_type' => array(

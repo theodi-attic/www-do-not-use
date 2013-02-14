@@ -85,7 +85,7 @@ function course_list_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Upcoming dates';
+  $handler->display->display_options['css_class'] = 'event-instances';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -93,28 +93,69 @@ function course_list_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_startend_datetime' => 'field_startend_datetime',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_startend_datetime' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* Field: Content: Start/End Date/Time */
   $handler->display->display_options['fields']['field_startend_datetime']['id'] = 'field_startend_datetime';
   $handler->display->display_options['fields']['field_startend_datetime']['table'] = 'field_data_field_startend_datetime';
   $handler->display->display_options['fields']['field_startend_datetime']['field'] = 'field_startend_datetime';
-  $handler->display->display_options['fields']['field_startend_datetime']['label'] = '';
+  $handler->display->display_options['fields']['field_startend_datetime']['label'] = 'Date';
+  $handler->display->display_options['fields']['field_startend_datetime']['alter']['text'] = '<a href="[path]">[field_startend_datetime]</a>';
   $handler->display->display_options['fields']['field_startend_datetime']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_startend_datetime']['settings'] = array(
-    'format_type' => 'just_date',
-    'fromto' => 'value',
+    'format_type' => 'long',
+    'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
   );
+  /* Field: Content: Location */
+  $handler->display->display_options['fields']['field_course_location']['id'] = 'field_course_location';
+  $handler->display->display_options['fields']['field_course_location']['table'] = 'field_data_field_course_location';
+  $handler->display->display_options['fields']['field_course_location']['field'] = 'field_course_location';
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['text'] = 'More details';
+  $handler->display->display_options['fields']['path']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['path']['alter']['link_class'] = 'btn btn-info btn-small';
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
+  /* Field: Content: Eventbrite URL */
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['id'] = 'field_course_eventbrite_url';
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['table'] = 'field_data_field_course_eventbrite_url';
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['field'] = 'field_course_eventbrite_url';
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['label'] = '';
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['alter']['text'] = 'Book now';
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['alter']['path'] = '[field_course_eventbrite_url-value]';
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['alter']['link_class'] = 'btn btn-primary btn-small';
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';

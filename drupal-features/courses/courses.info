@@ -11,6 +11,7 @@ features[features_api][] = api:1
 features[field][] = node-course_instance-field_course_contributors
 features[field][] = node-course_instance-field_course_eventbrite_url
 features[field][] = node-course_instance-field_course_leaders
+features[field][] = node-course_instance-field_course_location
 features[field][] = node-course_instance-field_course_materials_location
 features[field][] = node-course_instance-field_course_type
 features[field][] = node-course_instance-field_practicalities

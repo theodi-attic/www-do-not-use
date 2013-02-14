@@ -249,6 +249,75 @@ function courses_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-course_instance-field_course_location'.
+  $fields['node-course_instance-field_course_location'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_course_location',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'course_instance',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Basic information about the location of the course (e.g. The ODI, London)',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 8,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_course_location',
+      'label' => 'Location',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '120',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '-2',
+      ),
+    ),
+  );
+
   // Exported field: 'node-course_instance-field_course_materials_location'.
   $fields['node-course_instance-field_course_materials_location'] = array(
     'field_config' => array(
@@ -670,7 +739,7 @@ function courses_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_course_content',
-      'label' => 'Course Content',
+      'label' => 'The course will cover',
       'required' => 0,
       'settings' => array(
         'text_processing' => '1',
@@ -737,7 +806,7 @@ function courses_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_course_intended_audience',
-      'label' => 'Intended Audience',
+      'label' => 'Who is this for?',
       'required' => 0,
       'settings' => array(
         'text_processing' => '1',
@@ -804,7 +873,7 @@ function courses_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_course_learning_outcomes',
-      'label' => 'Learning Outcomes',
+      'label' => 'By the end of the course you will...',
       'required' => 0,
       'settings' => array(
         'text_processing' => '1',
@@ -1075,7 +1144,7 @@ function courses_field_default_fields() {
       'label' => 'Course Summary',
       'required' => 0,
       'settings' => array(
-        'display_summary' => 1,
+        'display_summary' => 0,
         'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
@@ -1380,8 +1449,9 @@ function courses_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A photo of the trainer');
+  t('Basic information about the location of the course (e.g. The ODI, London)');
   t('Bio');
-  t('Course Content');
+  t('By the end of the course you will...');
   t('Course Contributors');
   t('Course Leader(s)');
   t('Course Materials Info');
@@ -1392,13 +1462,13 @@ function courses_field_default_fields() {
   t('Course Type');
   t('Enter the Eventbrite URL here, in the form http://www.eventbrite.co.uk/event/5449726278 (numeric ID) or http://foobarrubbishevent.eventbrite.co.uk/ (custom subdomain)');
   t('Eventbrite URL');
-  t('Intended Audience');
-  t('Learning Outcomes');
+  t('Location');
   t('Photo');
   t('Practicalities');
   t('Select the Course Type for this Course Instance.');
   t('Start/End Date/Time');
   t('Suffix');
+  t('The course will cover');
   t('The trainer\'s title, e.g. Ms, Mr, Dr, Professor. Do not use full stops (i.e. use \'Dr\' not \'Dr.\'). If multiple titles then include all in the one field but separate with spaces and use the correct ordering, e.g. "Professor Sir". Avoid abbreviations (e.g. Prof) although \'Dr\' is acceptable.');
   t('Title');
   t('Use this field to describe the availability, licensing terms, or other features of the course materials. A link(s) to the course materials should not be provided here; use the Course Materials Locations field instead.');
@@ -1417,6 +1487,7 @@ function courses_field_default_fields() {
   t('Use this field to specify the name/number of the room in which the course/event will take place, e.g. "Open Two".');
   t('Use this field to state when a given instance of a course begins and ends. End date is required.');
   t('Venue Room');
+  t('Who is this for?');
 
   return $fields;
 }
