@@ -22,6 +22,15 @@ Then on the drupal admin interface:
 
 You should now be able to create Course Types and Course Instances.
 
+Styling
+-------
+
+The CSS is managed using LESS. To compile to the css directory, run `lessc` from the styling directory like so:
+
+	lessc odi.less > /home/odi/odi/www/sites/all/themes/odi/css/odi.css
+	
+Then clear the cache and you should be good to go!
+
 These instructions _will_ change as we migrate the website stuff from Hg to Git.
 
 License
