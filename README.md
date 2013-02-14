@@ -20,6 +20,8 @@ Then on the drupal admin interface:
 
 You should now be able to create Course Types and Course Instances.
 
+These instructions _will_ change as we migrate the website stuff from Hg to Git.
+
 License
 -------
 
