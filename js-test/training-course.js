@@ -52,10 +52,10 @@ test('table substituted', function () {
 	equal($eventTable.find('tbody tr td:eq(1)').text(), 'Covent Garden, London');
 	equal($eventTable.find('tbody tr td:eq(2)').text(), '£1,395.00 £1,255.00 (until 29 Mar)');
 	equal($eventTable.find('tbody tr td:eq(3) a').attr('href'), '/courses/something-2013-06-01');
-	equal($eventTable.find('tbody tr td:eq(3) a').attr('class'), 'btn btn-info');
+	equal($eventTable.find('tbody tr td:eq(3) a').attr('class'), 'btn btn-small btn-info');
 	equal($eventTable.find('tbody tr td:eq(3) a').text(), 'More Details');
 	equal($eventTable.find('tbody tr td:eq(4) a').attr('href'), 'http://dummy.eventbrite.co.uk/');
-	equal($eventTable.find('tbody tr td:eq(4) a').attr('class'), 'btn btn-primary');
+	equal($eventTable.find('tbody tr td:eq(4) a').attr('class'), 'btn btn-small btn-primary');
 	equal($eventTable.find('tbody tr td:eq(4) a').text(), 'Book Now');
 });
 
@@ -154,10 +154,10 @@ test('single matched event', function () {
 	equal($eventTable.find('tbody tr td:eq(2) strike').text(), '£1,395.00');
 	equal($eventTable.find('tbody tr td:eq(2) em').text(), '£1,255.00 (until 29 Mar)');
 	equal($eventTable.find('tbody tr td:eq(3) a').attr('href'), '/courses/dummy-course-2013-04-29');
-	equal($eventTable.find('tbody tr td:eq(3) a').attr('class'), 'btn btn-info');
+	equal($eventTable.find('tbody tr td:eq(3) a').attr('class'), 'btn btn-small btn-info');
 	equal($eventTable.find('tbody tr td:eq(3) a').text(), 'More Details');
 	equal($eventTable.find('tbody tr td:eq(4) a').attr('href'), 'http://dummy.eventbrite.co.uk/');
-	equal($eventTable.find('tbody tr td:eq(4) a').attr('class'), 'btn btn-primary');
+	equal($eventTable.find('tbody tr td:eq(4) a').attr('class'), 'btn btn-small btn-primary');
 	equal($eventTable.find('tbody tr td:eq(4) a').text(), 'Book Now');
 });
 

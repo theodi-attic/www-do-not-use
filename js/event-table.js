@@ -129,8 +129,8 @@
 				table += '<td>' + $.dateRange(event.startDate, event.endDate) + '</td>';
 				table += '<td>' + event.location.name + '</td>';
 				table += '<td>' + $.priceOptions(event.offers, date, lastBookingDate, soldOut) + '</td>';
-				table += '<td><a href="' + event['describedBy'] + '" class="btn btn-info">More Details</a></td>'; 
-				table += '<td>' + (soldOut ? 'Sold Out' : '<a href="' + event['@id'] + '" class="btn btn-primary">Book Now</a>') + '</td>';
+				table += '<td><a href="' + event['describedBy'] + '" class="btn btn-small btn-info">More Details</a></td>'; 
+				table += '<td>' + (soldOut ? 'Sold Out' : '<a href="' + event['@id'] + '" class="btn btn-small btn-primary">Book Now</a>') + '</td>';
 				table += '</tr>';
 				return true;
 			});
