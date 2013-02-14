@@ -30,7 +30,7 @@ test('table substituted', function () {
 		}
 	, $eventTable
 	;
-	$('.event-instances').eventTable({
+	$('#test1').eventTable({
 		data: events,
 		date: new Date('2013-02-13')
 	});
