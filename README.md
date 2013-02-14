@@ -8,6 +8,8 @@ Features and Courses
 
 How to setup the stuff arising from [this issue](https://github.com/theodi/open-orgn-services/issues/16):
 
+Assume you're logged in as ```odi```, in ```/home/odi```, then:
+
     mkdir git
     git clone -b 14-02-2013 git://github.com/theodi/www.git
     sudo ln -s /home/odi/git/www/drupal-features/courses/ /home/odi/odi/www/sites/all/modules/courses/
