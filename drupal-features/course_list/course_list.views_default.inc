@@ -115,24 +115,16 @@ function course_list_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Field: Content: Path */
-  $handler->display->display_options['fields']['path']['id'] = 'path';
-  $handler->display->display_options['fields']['path']['table'] = 'node';
-  $handler->display->display_options['fields']['path']['field'] = 'path';
-  $handler->display->display_options['fields']['path']['label'] = '';
-  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Field: Content: Start/End Date/Time */
   $handler->display->display_options['fields']['field_startend_datetime']['id'] = 'field_startend_datetime';
   $handler->display->display_options['fields']['field_startend_datetime']['table'] = 'field_data_field_startend_datetime';
   $handler->display->display_options['fields']['field_startend_datetime']['field'] = 'field_startend_datetime';
   $handler->display->display_options['fields']['field_startend_datetime']['label'] = 'Date';
-  $handler->display->display_options['fields']['field_startend_datetime']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_startend_datetime']['alter']['text'] = '<a href="[path]">[field_startend_datetime]</a>';
   $handler->display->display_options['fields']['field_startend_datetime']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_startend_datetime']['settings'] = array(
-    'format_type' => 'just_date',
-    'fromto' => 'value',
+    'format_type' => 'long',
+    'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
     'multiple_to' => '',
@@ -141,6 +133,17 @@ function course_list_views_default_views() {
   $handler->display->display_options['fields']['field_course_location']['id'] = 'field_course_location';
   $handler->display->display_options['fields']['field_course_location']['table'] = 'field_data_field_course_location';
   $handler->display->display_options['fields']['field_course_location']['field'] = 'field_course_location';
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['text'] = 'More details...';
+  $handler->display->display_options['fields']['path']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
   /* Field: Content: Eventbrite URL */
   $handler->display->display_options['fields']['field_course_eventbrite_url']['id'] = 'field_course_eventbrite_url';
   $handler->display->display_options['fields']['field_course_eventbrite_url']['table'] = 'field_data_field_course_eventbrite_url';
