@@ -76,18 +76,20 @@ var
 		return formattedPrice;
 	}
 
-,	eventTable = function(ids, events, date) {
+,	eventTable = function(ids, pages, events, date) {
 		var table = ''
 		,   eventList = []
 		;
 
 		// create a list of the events that we want to list
-		$(ids).each(function () {
+		$(ids).each(function (i) {
 			var id = this
 			,   event = events[id]
+			,   page = pages[i]
 			;
 			if (event !== undefined) {
 				event['@id'] = id;
+				event['describedBy'] = page;
 				eventList.push(event);
 			}
 			return true;
@@ -95,10 +97,10 @@ var
 
 		// create the table
 		table += '<table class="table">';
-		table += '<thead><tr><th>Course Date</th><th>Location</th><th>Price</th><th></th></tr></thead>';
+		table += '<thead><tr><th>Course Date</th><th>Location</th><th>Price</th><th></th><th></th></tr></thead>';
 		table += '<tbody>';
 		if (eventList.length === 0) {
-			table += '<tr><td colspan="4">This course is not scheduled to run again soon</td></tr>';
+			table += '<tr><td colspan="5">This course is not scheduled to run again soon</td></tr>';
 		} else {
 			$(eventList).each(function () {
 				var event = this
@@ -121,6 +123,7 @@ var
 				table += '<td>' + dateRange(event.startDate, event.endDate) + '</td>';
 				table += '<td>' + event.location.name + '</td>';
 				table += '<td>' + priceOptions(event.offers, date, lastBookingDate, soldOut) + '</td>';
+				table += '<td><a href="' + event['describedBy'] + '" class="btn btn-info">More Details</a></td>'; 
 				table += '<td>' + (soldOut ? 'Sold Out' : '<a href="' + event['@id'] + '" class="btn btn-primary">Book Now</a>') + '</td>';
 				table += '</tr>';
 				return true;
