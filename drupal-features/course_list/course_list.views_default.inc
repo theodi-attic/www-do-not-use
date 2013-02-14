@@ -139,9 +139,10 @@ function course_list_views_default_views() {
   $handler->display->display_options['fields']['path']['field'] = 'path';
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['path']['alter']['text'] = 'More details...';
+  $handler->display->display_options['fields']['path']['alter']['text'] = 'More details';
   $handler->display->display_options['fields']['path']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['path']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['path']['alter']['link_class'] = 'btn btn-info btn-small';
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['path']['absolute'] = TRUE;
   /* Field: Content: Eventbrite URL */
@@ -150,7 +151,10 @@ function course_list_views_default_views() {
   $handler->display->display_options['fields']['field_course_eventbrite_url']['field'] = 'field_course_eventbrite_url';
   $handler->display->display_options['fields']['field_course_eventbrite_url']['label'] = '';
   $handler->display->display_options['fields']['field_course_eventbrite_url']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_course_eventbrite_url']['alter']['text'] = '<a href="[field_course_eventbrite_url-value]">Book now...</a>';
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['alter']['text'] = 'Book now';
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['alter']['path'] = '[field_course_eventbrite_url-value]';
+  $handler->display->display_options['fields']['field_course_eventbrite_url']['alter']['link_class'] = 'btn btn-primary btn-small';
   $handler->display->display_options['fields']['field_course_eventbrite_url']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
