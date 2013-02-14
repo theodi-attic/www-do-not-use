@@ -1,5 +1,5 @@
-var 
-	dateRange = function(startDate, endDate) {
+(function($) {
+	$.dateRange = function(startDate, endDate) {
 		var start = new Date(startDate)
 		,   end = new Date(endDate)
 		,   startYear = start.getFullYear()
@@ -9,7 +9,7 @@ var
 		,   startDay = start.getDate()
 		,   endDay = end.getDate()
 		;
-		if (startYear === endYear) {
+	if (startYear === endYear) {
 			if (startMonth === endMonth) {
 				if (startDay === endDay) {
 					return startDay + ' ' + startMonth + ' ' + startYear;
@@ -22,17 +22,17 @@ var
 		} else {
 			return startDay + ' ' + startMonth + ' ' + startYear + ' - ' + endDay + ' ' + endMonth + ' ' + endYear;
 		}
-	}
+	};
 
-, formatPrice = function(price) {
+	$.formatPrice = function(price) {
 		price = price.toString().replace(/(\d+)(\d\d\d)($|\.\d\d)/, '$1,$2$3');
 		if (price.match(/\.\d+/) === null) {
 			price += '.00';
 		}
 		return '£' + price;
-	}
+	};
 
-, priceOptions = function(offers, date, lastBookingDate, soldOut) {
+	$.priceOptions = function(offers, date, lastBookingDate, soldOut) {
 		var minFinalPrice
 		,   countFinalPrice = 0
 		,   minCurrentPrice
@@ -66,17 +66,17 @@ var
 		});
 		// generate the formatted price
 		if (minCurrentPrice < minFinalPrice) {
-			formattedPrice = '<strike>' + (countFinalPrice > 1 ? 'from ' : '') + formatPrice(minFinalPrice) + '</strike> ';
-			formattedPrice += '<em>' + (countCurrentPrice > 1 ? 'from ' : '') + formatPrice(minCurrentPrice) + ' (until ' + currentPriceEndDate.getDate() + ' ' + currentPriceEndDate.toString().substr(4, 3) + ')</em>';
+			formattedPrice = '<strike>' + (countFinalPrice > 1 ? 'from ' : '') + $.formatPrice(minFinalPrice) + '</strike> ';
+			formattedPrice += '<em>' + (countCurrentPrice > 1 ? 'from ' : '') + $.formatPrice(minCurrentPrice) + ' (until ' + currentPriceEndDate.getDate() + ' ' + currentPriceEndDate.toString().substr(4, 3) + ')</em>';
 		} else if (countFinalPrice > 1) {
-			formattedPrice = 'from ' + formatPrice(minFinalPrice);
+			formattedPrice = 'from ' + $.formatPrice(minFinalPrice);
 		} else {
-			formattedPrice = formatPrice(minFinalPrice);
+			formattedPrice = $.formatPrice(minFinalPrice);
 		}
 		return formattedPrice;
-	}
+	};
 
-,	eventTable = function(ids, pages, events, date) {
+	$.eventTable = function(ids, pages, events, date) {
 		var table = ''
 		,   eventList = []
 		;
@@ -120,9 +120,9 @@ var
 					return true;
 				});
 				table += '<tr>';
-				table += '<td>' + dateRange(event.startDate, event.endDate) + '</td>';
+				table += '<td>' + $.dateRange(event.startDate, event.endDate) + '</td>';
 				table += '<td>' + event.location.name + '</td>';
-				table += '<td>' + priceOptions(event.offers, date, lastBookingDate, soldOut) + '</td>';
+				table += '<td>' + $.priceOptions(event.offers, date, lastBookingDate, soldOut) + '</td>';
 				table += '<td><a href="' + event['describedBy'] + '" class="btn btn-info">More Details</a></td>'; 
 				table += '<td>' + (soldOut ? 'Sold Out' : '<a href="' + event['@id'] + '" class="btn btn-primary">Book Now</a>') + '</td>';
 				table += '</tr>';
@@ -132,5 +132,24 @@ var
 		table += '</tbody>';
 		table += '</table>';
 		return table;
-	}
-;
+	};
+
+	$.fn.eventTable = function(options) {
+		var $table = $(this)
+		,   data = options.data
+		,   date = options.date || new Date()
+		,   ids = []
+		,   pages = []
+		;
+		$table
+			.find('tbody tr')
+			.each(function () {
+				var $row = $(this)
+				;
+				ids.push($row.find('td:eq(3) a').attr('href'));
+				pages.push($row.find('td:eq(2) a').attr('href'));
+			});
+		$table.replaceWith($.eventTable(ids, pages, data, date));
+		return $table;
+	};
+})(jQuery);

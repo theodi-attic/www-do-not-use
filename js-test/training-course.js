@@ -1,16 +1,77 @@
+module('auto-substitution');
+
+test('table substituted', function () {
+	var events = {
+  	"http://dummy.eventbrite.co.uk/": {
+	      "@type": "http://schema.org/Event",
+	      "startDate": "2013-04-29T09:00:00",
+	      "endDate": "2013-05-01T17:00:00",
+	      "location": {
+	        "@type": "http://schema.org/Place",
+	        "name": "Covent Garden, London"
+	      },
+	      "offers": [{
+	        "@type": "http://schema.org/Offer",
+	        "name": "Standard Registration",
+	        "price": 1395.00,
+	        "priceCurrency": "GBP",
+	        "validFrom": "2013-03-29",
+	        "validThrough": "2013-04-28",
+	        "inventoryLevel": 13
+	      }, {
+	        "@type": "http://schema.org/Offer",
+	        "name": "Early-Bird Registration",
+	        "price": 1255.00,
+	        "priceCurrency": "GBP",
+	        "validThrough": "2013-03-29",
+	        "inventoryLevel": 13
+	      }]
+    	}
+		}
+	, $eventTable
+	;
+	$('.event-instances').eventTable({
+		data: events,
+		date: new Date('2013-02-13')
+	});
+	$eventTable = $('.table:eq(0)');
+	ok($eventTable.is('table'), 'eventTable() returns a table');
+	equal($eventTable.attr('class'), 'table', 'the table has a class of .table');
+	ok($eventTable.find('thead').is('thead'), 'the table contains a thead');
+	equal($eventTable.find('thead tr').length, 1, 'the thead has a single row');
+	equal($eventTable.find('thead tr th').length, 5, 'the thead has five columns');
+	equal($eventTable.find('thead tr th:eq(0)').text(), 'Course Date', 'the first column is entitled "Course Date"');
+	equal($eventTable.find('thead tr th:eq(1)').text(), 'Location', 'the second column is entitled "Location"');
+	equal($eventTable.find('thead tr th:eq(2)').text(), 'Price', 'the third columns is entitled "Price"');
+	equal($eventTable.find('thead tr th:eq(3)').text(), '', 'the fourth column has no title');
+	equal($eventTable.find('thead tr th:eq(4)').text(), '', 'the final column has no title');
+	ok($eventTable.find('tbody').is('tbody'), 'the table contains a tbody');
+	equal($eventTable.find('tbody tr').length, 1, 'the tbody has a single row');
+	equal($eventTable.find('tbody tr td').length, 5, 'the row has five cells');
+	equal($eventTable.find('tbody tr td:eq(0)').text(), '29 Apr - 1 May 2013');
+	equal($eventTable.find('tbody tr td:eq(1)').text(), 'Covent Garden, London');
+	equal($eventTable.find('tbody tr td:eq(2)').text(), '£1,395.00 £1,255.00 (until 29 Mar)');
+	equal($eventTable.find('tbody tr td:eq(3) a').attr('href'), '/courses/something-2013-06-01');
+	equal($eventTable.find('tbody tr td:eq(3) a').attr('class'), 'btn btn-info');
+	equal($eventTable.find('tbody tr td:eq(3) a').text(), 'More Details');
+	equal($eventTable.find('tbody tr td:eq(4) a').attr('href'), 'http://dummy.eventbrite.co.uk/');
+	equal($eventTable.find('tbody tr td:eq(4) a').attr('class'), 'btn btn-primary');
+	equal($eventTable.find('tbody tr td:eq(4) a').text(), 'Book Now');
+});
+
 module('table generation');
 
 test('no events', function () {
 	var events = {}
 	,   ids = []
 	,   pages = []
-	,		$eventTable = $(eventTable(ids, pages, events, new Date('2013-02-13')))
+	,		$eventTable = $($.eventTable(ids, pages, events, new Date('2013-02-13')))
 	;
 	ok($eventTable.is('table'), 'eventTable() returns a table');
 	equal($eventTable.attr('class'), 'table', 'the table has a class of .table');
 	ok($eventTable.find('thead').is('thead'), 'the table contains a thead');
 	equal($eventTable.find('thead tr').length, 1, 'the thead has a single row');
-	equal($eventTable.find('thead tr th').length, 5, 'the thead has four columns');
+	equal($eventTable.find('thead tr th').length, 5, 'the thead has five columns');
 	equal($eventTable.find('thead tr th:eq(0)').text(), 'Course Date', 'the first column is entitled "Course Date"');
 	equal($eventTable.find('thead tr th:eq(1)').text(), 'Location', 'the second column is entitled "Location"');
 	equal($eventTable.find('thead tr th:eq(2)').text(), 'Price', 'the third columns is entitled "Price"');
@@ -54,7 +115,7 @@ test('single matched event', function () {
 	, ids = ['http://dummy.eventbrite.co.uk/']
 	, pages = ['/courses/dummy-course-2013-04-29']
 	, date = new Date('2013-02-13')
-	, $eventTable = $(eventTable(ids, pages, events, date));
+	, $eventTable = $($.eventTable(ids, pages, events, date));
 	;
 	equal($eventTable.find('tbody tr').length, 1, 'the tbody has a single row');
 	equal($eventTable.find('tbody tr td').length, 5, 'the row has five cells');
@@ -102,7 +163,7 @@ test('sold out event', function () {
 	, ids = ['http://dummy.eventbrite.co.uk/']
 	, pages = ['/courses/dummy-course-2013-04-29']
 	, date = new Date('2013-02-13')
-	, $eventTable = $(eventTable(ids, pages, events, date));
+	, $eventTable = $($.eventTable(ids, pages, events, date));
 	;
 	equal($eventTable.find('tbody tr').length, 1, 'the tbody has a single row');
 	equal($eventTable.find('tbody tr td:eq(2)').text(), 'from £1,255.00');
@@ -165,7 +226,7 @@ test('multiple matched events', function () {
 	, ids = ['http://dummy1.eventbrite.co.uk/', 'http://dummy2.eventbrite.co.uk/']
 	, pages = ['/courses/dummy-course-2013-04-29', '/courses/dummy-course-2013-06-10']
 	, date = new Date('2013-02-13')
-	, $eventTable = $(eventTable(ids, pages, events, date));
+	, $eventTable = $($.eventTable(ids, pages, events, date));
 	;
 	equal($eventTable.find('tbody tr').length, 2, 'the tbody has two rows');
 	equal($eventTable.find('tbody tr:eq(0) td:eq(0)').text(), '29 Apr - 1 May 2013');
@@ -183,10 +244,10 @@ test('multiple matched events', function () {
 module('date range formatting');
 
 test('date range formatting', function () {
-	equal(dateRange('2013-01-01T09:00:00', '2013-01-03T17:00:00'), '1-3 Jan 2013');
-	equal(dateRange('2013-01-31T09:00:00', '2013-02-01T17:00:00'), '31 Jan - 1 Feb 2013');
-	equal(dateRange('2013-12-31T09:00:00', '2014-01-02T17:00:00'), '31 Dec 2013 - 2 Jan 2014');
-	equal(dateRange('2013-01-01T09:00:00', '2013-01-01T17:00:00'), '1 Jan 2013');
+	equal($.dateRange('2013-01-01T09:00:00', '2013-01-03T17:00:00'), '1-3 Jan 2013');
+	equal($.dateRange('2013-01-31T09:00:00', '2013-02-01T17:00:00'), '31 Jan - 1 Feb 2013');
+	equal($.dateRange('2013-12-31T09:00:00', '2014-01-02T17:00:00'), '31 Dec 2013 - 2 Jan 2014');
+	equal($.dateRange('2013-01-01T09:00:00', '2013-01-01T17:00:00'), '1 Jan 2013');
 });
 
 module('price formatting');
@@ -201,7 +262,7 @@ test('single price', function () {
 			"inventoryLevel": 13
 		}]
 	;
-	equal(priceOptions(offers, new Date('2013-02-13'), new Date('2013-04-28'), false), '£1,255.00');
+	equal($.priceOptions(offers, new Date('2013-02-13'), new Date('2013-04-28'), false), '£1,255.00');
 });
 
 test('member price', function () {
@@ -221,7 +282,7 @@ test('member price', function () {
 			"inventoryLevel": 34
 		}]
 	;
-	equal(priceOptions(offers, new Date('2013-02-13'), new Date('2013-04-28'), false), 'from £360.75');
+	equal($.priceOptions(offers, new Date('2013-02-13'), new Date('2013-04-28'), false), 'from £360.75');
 });
 
 test('early-bird prices', function () {
@@ -242,9 +303,9 @@ test('early-bird prices', function () {
 			"inventoryLevel": 13
 		}]
 	;
-	equal(priceOptions(offers, new Date('2013-02-28'), new Date('2013-04-28'), false), '<strike>£1,395.00</strike> <em>£1,255.00 (until 29 Mar)</em>');
-	equal(priceOptions(offers, new Date('2013-03-29'), new Date('2013-04-28'), false), '£1,395.00');
-	equal(priceOptions(offers, new Date('2013-04-05'), new Date('2013-04-28'), false), '£1,395.00');
+	equal($.priceOptions(offers, new Date('2013-02-28'), new Date('2013-04-28'), false), '<strike>£1,395.00</strike> <em>£1,255.00 (until 29 Mar)</em>');
+	equal($.priceOptions(offers, new Date('2013-03-29'), new Date('2013-04-28'), false), '£1,395.00');
+	equal($.priceOptions(offers, new Date('2013-04-05'), new Date('2013-04-28'), false), '£1,395.00');
 });
 
 test('sold-out early-bird prices', function () {
@@ -264,5 +325,5 @@ test('sold-out early-bird prices', function () {
 			"inventoryLevel": 0
 		}]
 	;
-	equal(priceOptions(offers, new Date('2013-02-28'), new Date('2013-04-28'), false), '£1,395.00');
+	equal($.priceOptions(offers, new Date('2013-02-28'), new Date('2013-04-28'), false), '£1,395.00');
 });
