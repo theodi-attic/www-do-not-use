@@ -88,6 +88,33 @@ asyncTest('ajax table substitution', function () {
 	);
 });
 
+// this test is based on a specific set of data coming through from the test server
+asyncTest('course details table substitution', function () {
+	$.ajax(
+		'http://151.236.219.131/sites/default/files/courses.json',
+		{
+			dataType: 'json',
+			success: function (data) {
+				$('#test3')
+					.eventTable({ data: data });
+				$eventTable = $('.table:eq(2)');
+				equal($eventTable.find('tbody tr').length, 2, 'the tbody has two rows');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(0)').text(), '17 Mar 2013');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(1)').text(), 'The office');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(2)').text(), '£1.00 free');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(2) strike').text(), '£1.00');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(2) em').text(), 'free');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(3) a').attr('href'), 'http://www.eventbrite.com/event/5441375300');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(0)').text(), '16 Apr 2013');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(1)').text(), 'Open Data Institute');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(2)').text(), 'from £185.15');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(3) a').attr('href'), 'http://www.eventbrite.com/event/5519765768');
+				start();
+			}
+		}
+	);
+});
+
 module('table generation');
 
 test('no events', function () {
