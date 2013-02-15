@@ -22,6 +22,14 @@ Then on the drupal admin interface:
 
 You should now be able to create Course Types and Course Instances.
 
+Javascript
+----------
+
+To get the Javascript that fetches the data from our cached Eventbrite JSON (and keep it nicely version controlled), we're going to need to do a bit more symlinking:
+
+    sudo ln -s /home/odi/git/www/js/event-table.js /home/odi/odi/www/sites/all/themes/odi/js/
+    sudo ln -s /home/odi/git/www/js/training-course.js /home/odi/odi/www/sites/all/themes/odi/js/
+
 Styling
 -------
 
@@ -42,8 +50,14 @@ To compile to the css directory, run `lessc` from the styling directory like so:
 
 	lessc odi.less > /home/odi/odi/www/sites/all/themes/odi/css/odi.css
 	
+Templating
+----------
 
-Then clear the cache and you should be good to go!
+There's also a bit of templating that we need to keep version controlled. Again, we need to symlink this from the git folder:
+
+	sudo ln -s /home/odi/git/www/templates/ /home/odi/odi/www/sites/all/themes/odi/
+
+Finally, clear the cache and you should be good to go!
 
 These instructions _will_ change as we migrate the website stuff from Hg to Git.
 
