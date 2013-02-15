@@ -129,7 +129,9 @@
 				table += '<td>' + $.dateRange(event.startDate, event.endDate) + '</td>';
 				table += '<td>' + event.location.name + '</td>';
 				table += '<td>' + $.priceOptions(event.offers, date, lastBookingDate, soldOut) + '</td>';
-				table += '<td><a href="' + event['describedBy'] + '" class="btn btn-small btn-info">More Details</a></td>'; 
+				if (pages.length === ids.length) {
+					table += '<td><a href="' + event['describedBy'] + '" class="btn btn-small btn-info">More Details</a></td>'; 
+				}
 				table += '<td>' + (soldOut ? 'Sold Out' : '<a href="' + event['@id'] + '" class="btn btn-small btn-primary">Book Now</a>') + '</td>';
 				table += '</tr>';
 				return true;
@@ -151,9 +153,13 @@
 			.find('tbody tr')
 			.each(function () {
 				var $row = $(this)
+				,   id = $row.find('td:last a').attr('href')
+				,   page = $row.find('td:eq(2) a').attr('href')
 				;
-				ids.push($row.find('td:eq(3) a').attr('href'));
-				pages.push($row.find('td:eq(2) a').attr('href'));
+				ids.push(id);
+				if (page !== id) {
+					pages.push(page);
+				}
 			});
 		$table.replaceWith($.eventTable(ids, pages, data, date));
 		return $table;
