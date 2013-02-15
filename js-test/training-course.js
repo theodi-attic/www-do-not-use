@@ -30,7 +30,7 @@ test('table substituted', function () {
 		}
 	, $eventTable
 	;
-	$('.event-instances').eventTable({
+	$('#test1').eventTable({
 		data: events,
 		date: new Date('2013-02-13')
 	});
@@ -52,11 +52,40 @@ test('table substituted', function () {
 	equal($eventTable.find('tbody tr td:eq(1)').text(), 'Covent Garden, London');
 	equal($eventTable.find('tbody tr td:eq(2)').text(), '£1,395.00 £1,255.00 (until 29 Mar)');
 	equal($eventTable.find('tbody tr td:eq(3) a').attr('href'), '/courses/something-2013-06-01');
-	equal($eventTable.find('tbody tr td:eq(3) a').attr('class'), 'btn btn-info');
+	equal($eventTable.find('tbody tr td:eq(3) a').attr('class'), 'btn btn-small btn-info');
 	equal($eventTable.find('tbody tr td:eq(3) a').text(), 'More Details');
 	equal($eventTable.find('tbody tr td:eq(4) a').attr('href'), 'http://dummy.eventbrite.co.uk/');
-	equal($eventTable.find('tbody tr td:eq(4) a').attr('class'), 'btn btn-primary');
+	equal($eventTable.find('tbody tr td:eq(4) a').attr('class'), 'btn btn-small btn-primary');
 	equal($eventTable.find('tbody tr td:eq(4) a').text(), 'Book Now');
+});
+
+// this test is based on a specific set of data coming through from the test server
+asyncTest('ajax table substitution', function () {
+	$.ajax(
+		'http://151.236.219.131/sites/default/files/courses.json',
+		{
+			dataType: 'json',
+			success: function (data) {
+				$('#test2')
+					.eventTable({ data: data });
+				$eventTable = $('.table:eq(1)');
+				equal($eventTable.find('tbody tr').length, 2, 'the tbody has two rows');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(0)').text(), '17 Mar 2013');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(1)').text(), 'The office');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(2)').text(), '£1.00 free');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(2) strike').text(), '£1.00');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(2) em').text(), 'free');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(3) a').attr('href'), '/courses/drupal-down-the-rabbit-hole-2013-03-17');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(4) a').attr('href'), 'http://www.eventbrite.com/event/5441375300');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(0)').text(), '16 Apr 2013');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(1)').text(), 'Open Data Institute');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(2)').text(), 'from £185.15');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(3) a').attr('href'), '/courses/open-data-law-and-licensing-2013-04-16');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(4) a').attr('href'), 'http://www.eventbrite.com/event/5519765768');
+				start();
+			}
+		}
+	);
 });
 
 module('table generation');
@@ -125,10 +154,10 @@ test('single matched event', function () {
 	equal($eventTable.find('tbody tr td:eq(2) strike').text(), '£1,395.00');
 	equal($eventTable.find('tbody tr td:eq(2) em').text(), '£1,255.00 (until 29 Mar)');
 	equal($eventTable.find('tbody tr td:eq(3) a').attr('href'), '/courses/dummy-course-2013-04-29');
-	equal($eventTable.find('tbody tr td:eq(3) a').attr('class'), 'btn btn-info');
+	equal($eventTable.find('tbody tr td:eq(3) a').attr('class'), 'btn btn-small btn-info');
 	equal($eventTable.find('tbody tr td:eq(3) a').text(), 'More Details');
 	equal($eventTable.find('tbody tr td:eq(4) a').attr('href'), 'http://dummy.eventbrite.co.uk/');
-	equal($eventTable.find('tbody tr td:eq(4) a').attr('class'), 'btn btn-primary');
+	equal($eventTable.find('tbody tr td:eq(4) a').attr('class'), 'btn btn-small btn-primary');
 	equal($eventTable.find('tbody tr td:eq(4) a').text(), 'Book Now');
 });
 
