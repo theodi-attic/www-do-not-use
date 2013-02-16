@@ -115,6 +115,33 @@ asyncTest('course details table substitution', function () {
 	);
 });
 
+// this test is based on a specific set of data coming through from the test server
+asyncTest('course details table substitution', function () {
+	$.ajax(
+		'http://151.236.219.131/sites/default/files/courses.json',
+		{
+			dataType: 'json',
+			success: function (data) {
+				$('#test3')
+					.eventTable({ data: data });
+				$eventTable = $('.table:eq(2)');
+				equal($eventTable.find('tbody tr').length, 2, 'the tbody has two rows');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(0)').text(), '17 Mar 2013');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(1)').text(), 'The office');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(2)').text(), '£1.00 free');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(2) strike').text(), '£1.00');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(2) em').text(), 'free');
+				equal($eventTable.find('tbody tr:eq(0) td:eq(3) a').attr('href'), 'http://www.eventbrite.com/event/5441375300');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(0)').text(), '16 Apr 2013');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(1)').text(), 'Open Data Institute');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(2)').text(), 'from £185.15');
+				equal($eventTable.find('tbody tr:eq(1) td:eq(3) a').attr('href'), 'http://www.eventbrite.com/event/5519765768');
+				start();
+			}
+		}
+	);
+});
+
 module('table generation');
 
 test('no events', function () {
@@ -383,3 +410,18 @@ test('sold-out early-bird prices', function () {
 	;
 	equal($.priceOptions(offers, new Date('2013-02-28'), new Date('2013-04-28'), false), '£1,395.00');
 });
+
+test('only free', function () {
+	var offers = [
+	      {
+	        "@type": "http://schema.org/Offer",
+	        "name": "Open data market makers",
+	        "price": 0.0,
+	        "priceCurrency": "GBP",
+	        "validThrough": "2013-03-07T15:30:00+00:00",
+	        "inventoryLevel": 40
+	      }
+	    ]
+	;
+	equal($.priceOptions(offers, new Date('2013-02-16'), new Date('2013-03-07T15:30:00+00:00'), false), 'free');
+})
