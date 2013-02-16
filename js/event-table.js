@@ -73,7 +73,11 @@
 			formattedPrice = '<strike>' + (countFinalPrice > 1 ? 'from ' : '') + $.formatPrice(minFinalPrice) + '</strike> ';
 			formattedPrice += '<em>' + (minCurrentPrice === 0 ? 'free' : (countCurrentPrice > 1 ? 'from ' : '') + $.formatPrice(minCurrentPrice) + ' (until ' + currentPriceEndDate.getDate() + ' ' + currentPriceEndDate.toString().substr(4, 3)) + ')</em>';
 		} else if (minFinalPrice === 0) {
-			formattedPrice = '<strike>' + $.formatPrice(maxFinalPrice) + '</strike> <em>free</em>';
+			if (maxFinalPrice === 0) {
+				formattedPrice = 'free';
+			} else {
+				formattedPrice = '<strike>' + $.formatPrice(maxFinalPrice) + '</strike> <em>free</em>';
+			}
 		} else if (countFinalPrice > 1) {
 			formattedPrice = 'from ' + $.formatPrice(minFinalPrice);
 		} else {
