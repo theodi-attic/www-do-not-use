@@ -103,7 +103,11 @@
 
 		// create the table
 		table += '<table class="table">';
-		table += '<thead><tr><th>Course Date</th><th>Location</th><th>Price</th><th></th><th></th></tr></thead>';
+		table += '<thead><tr><th>Course Date</th><th>Location</th><th>Price</th><th></th>';
+		if (pages.length === ids.length) {
+			table += '<th></th>';
+		}
+		table += '</tr></thead>';
 		table += '<tbody>';
 		if (eventList.length === 0) {
 			table += '<tr><td colspan="5">This course is not scheduled to run again soon</td></tr>';
