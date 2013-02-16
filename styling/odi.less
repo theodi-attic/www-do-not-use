@@ -1501,7 +1501,7 @@ display: none;
 
 // Course styling
 
-.view-upcoming-courses {
+.view-upcoming-courses, .node-type-course-instance {
 	table {
 		font-size: 1.1em;
 		width: 98%;
@@ -1519,8 +1519,8 @@ display: none;
 .node-course-type, .node-course-instance {
 	margin-bottom: 20px;
 	.field-label {
-		font-size: 1.3em;
-		margin-bottom: 10px;
+		font-size: 1.4em;
+		margin: 12px 0 12px;
 		padding-bottom: 5px;
 		border-bottom: 1px solid #eeeeef;
 		font-weight: normal;
@@ -1528,6 +1528,22 @@ display: none;
 	
 	.field-item {
 		margin-bottom: 10px;
+	}
+	
+	.node-trainer, .node-team-member {
+		img {
+			float: right;
+			padding: 5px 5px 10px 10px;
+		}
+		
+		footer {
+			display: none;
+		}
+		
+		h2.node-title {
+			font-size: 20px;
+			line-height: 25px;
+		}
 	}
 }
 
@@ -1539,5 +1555,22 @@ display: none;
 		margin-bottom: 5px;
 		margin-top: 0;
 		border-bottom: 1px solid #eeeeef;
+	}
+	
+	tbody {
+		tr {
+			background-color: #eee;
+			border-bottom: 1px solid #ccc;
+			padding: 0.1em 0.6em;
+		}
+	}
+}
+
+.view-course-list {
+	margin-bottom: 15px;
+	
+	.views-row {
+		padding: 10px;
+		font-size: 1.2em;
 	}
 }

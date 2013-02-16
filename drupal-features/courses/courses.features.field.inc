@@ -67,7 +67,7 @@ function courses_field_default_fields() {
           'module' => 'entityreference',
           'settings' => array(
             'links' => 0,
-            'view_mode' => 'token',
+            'view_mode' => 'teaser',
           ),
           'type' => 'entityreference_entity_view',
           'weight' => '6',
@@ -143,9 +143,10 @@ function courses_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '8',
+          'type' => 'text_default',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -237,7 +238,7 @@ function courses_field_default_fields() {
           'module' => 'entityreference',
           'settings' => array(
             'links' => 0,
-            'view_mode' => 'token',
+            'view_mode' => 'teaser',
           ),
           'type' => 'entityreference_entity_view',
           'weight' => '5',
@@ -483,7 +484,7 @@ function courses_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1273,7 +1274,7 @@ function courses_field_default_fields() {
           'weight' => '4',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1346,7 +1347,7 @@ function courses_field_default_fields() {
           'weight' => '3',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
