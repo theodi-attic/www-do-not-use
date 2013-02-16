@@ -103,6 +103,8 @@
       <?php endif; ?>
     </header>
   <?php endif; ?>
+  
+  <p><?php print l(t('Back to course details'), "node/". $content['field_course_type'][0]['#markup'], array('attributes' => array('class' => 'btn btn-small btn-info'))); ?></p>
 
   <table class="table views-table">
     <thead>
@@ -120,6 +122,7 @@
   <script src="/sites/all/themes/odi/js/training-course.js"></script>
 
   <?php
+    hide($content['field_course_type']);
     hide($content['field_startend_datetime']);
     hide($content['field_course_location']);
     hide($content['field_course_eventbrite_url']);
