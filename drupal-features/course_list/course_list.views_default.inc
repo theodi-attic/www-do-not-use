@@ -39,6 +39,14 @@ function course_list_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Course length */
+  $handler->display->display_options['fields']['field_course_length']['id'] = 'field_course_length';
+  $handler->display->display_options['fields']['field_course_length']['table'] = 'field_data_field_course_length';
+  $handler->display->display_options['fields']['field_course_length']['field'] = 'field_course_length';
+  $handler->display->display_options['fields']['field_course_length']['label'] = '';
+  $handler->display->display_options['fields']['field_course_length']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_course_length']['alter']['text'] = '(<em>[field_course_length-value]</em>)';
+  $handler->display->display_options['fields']['field_course_length']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -68,7 +76,18 @@ function course_list_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'Introduction';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<p>ODI is committed to providing world class training in the area of Open and Linked Data Technologies. The following courses are offered:</p>';
+  $handler->display->display_options['header']['area']['content'] = '<p>
+ODI is committed to providing world class training in the area of Open and Linked Data Technologies. This will enable the ODI to inspire the next generation of Open Data entrepreneurs, developers, technologists, and evangelists.
+</p>
+<p>
+A variety of training courses will be offered, the main one being an accredited postgraduate certificate in Open Data Technologies. This intensive short course will equip people with the tools, techniques and business methods of Open Data publication and application construction. Year 1 material will be developed for a single first year cohort comprising a total of 25 Open Data Technologists. In subsequent years a minimum of two cohorts will be accepted. The goal by the end of the first five years of operation will be to have trained at least 225 Open Data Technologists. 
+</p>
+<p>
+An Open Data Fellowship Programme will also be constructed. This will cover the same core material as for the Open Data Technologists. In addition these individuals will be involved in the acquisition of experience and knowledge around Open Data policy, standards and an understanding of the necessary skills for developing Open Data capabilities within organisations.  They will work to support some of our startup companies, larger private companies and public sector organisations in their formulation of Open Data strategies. 
+</p>
+<p>
+As part of the Fellows’ programme of study they will serve as ‘Open Data Evangelists’ in public and private sector organisations. Their explicit role will be to create sustainable knowledge and understanding of Open Government Data (OGD) exploitation and business opportunities within the organisations in which they are placed. All of this will be to support capability building and best practice. In year 1 we will aim for six Fellows and in subsequent years twelve. 
+</p>';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['path'] = 'courses';
   $export['course_list'] = $view;

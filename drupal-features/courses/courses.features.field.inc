@@ -482,8 +482,9 @@ function courses_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
+          'module' => 'entityreference',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'entityreference_entity_id',
           'weight' => '8',
         ),
         'teaser' => array(
@@ -824,7 +825,7 @@ function courses_field_default_fields() {
           'rows' => '12',
         ),
         'type' => 'text_textarea',
-        'weight' => '40',
+        'weight' => '4',
       ),
     ),
   );
@@ -891,7 +892,7 @@ function courses_field_default_fields() {
           'rows' => '6',
         ),
         'type' => 'text_textarea',
-        'weight' => '42',
+        'weight' => '6',
       ),
     ),
   );
@@ -958,7 +959,76 @@ function courses_field_default_fields() {
           'rows' => '8',
         ),
         'type' => 'text_textarea',
-        'weight' => '41',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-course_type-field_course_length'.
+  $fields['node-course_type-field_course_length'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_course_length',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'course_type',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 16,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_course_length',
+      'label' => 'Course length',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
       ),
     ),
   );
@@ -1025,7 +1095,7 @@ function courses_field_default_fields() {
           'rows' => '4',
         ),
         'type' => 'text_textarea',
-        'weight' => '46',
+        'weight' => '9',
       ),
     ),
   );
@@ -1092,7 +1162,7 @@ function courses_field_default_fields() {
           'rows' => '4',
         ),
         'type' => 'text_textarea',
-        'weight' => '43',
+        'weight' => '7',
       ),
     ),
   );
@@ -1159,7 +1229,7 @@ function courses_field_default_fields() {
           'rows' => '4',
         ),
         'type' => 'text_textarea',
-        'weight' => '44',
+        'weight' => '8',
       ),
     ),
   );
@@ -1228,7 +1298,7 @@ function courses_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '31',
+        'weight' => '3',
       ),
     ),
   );
@@ -1537,6 +1607,7 @@ function courses_field_default_fields() {
   t('Course Requirements');
   t('Course Summary');
   t('Course Type');
+  t('Course length');
   t('Enter the Eventbrite URL here, in the form http://www.eventbrite.co.uk/event/5449726278 (numeric ID) or http://foobarrubbishevent.eventbrite.co.uk/ (custom subdomain)');
   t('Eventbrite URL');
   t('Location');

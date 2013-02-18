@@ -20,6 +20,7 @@ features[field][] = node-course_instance-field_venue_room
 features[field][] = node-course_type-field_course_content
 features[field][] = node-course_type-field_course_intended_audience
 features[field][] = node-course_type-field_course_learning_outcomes
+features[field][] = node-course_type-field_course_length
 features[field][] = node-course_type-field_course_materials_info
 features[field][] = node-course_type-field_course_prerequisites
 features[field][] = node-course_type-field_course_requirements
