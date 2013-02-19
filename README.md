@@ -12,7 +12,7 @@ Assume you're logged in as ```odi```, in ```/home/odi```, then:
 
     mkdir git
     git clone -b 14-02-2013 git://github.com/theodi/www.git
-    sudo ln -s /home/odi/git/www/drupal-features/courses/ /home/odi/odi/www/sites/all/modules/courses/
+    sudo ln -s /home/odi/git/www/drupal-features/courses/ /home/odi/odi/www/sites/all/modules/
     sudo ln -s /home/odi/git/www/drupal-features/course_list/ /home/odi/odi/www/sites/all/modules/
 	sudo ln -s /home/odi/git/www/drupal-features/odi_menu/ /home/odi/odi/www/sites/all/modules/
 
