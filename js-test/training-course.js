@@ -324,6 +324,48 @@ test('multiple matched events', function () {
 	equal($eventTable.find('tbody tr:eq(1) td:eq(4) a').attr('href'), 'http://dummy2.eventbrite.co.uk/');
 });
 
+test('event with a .com URL', function () {
+	var events = {
+  	"http://dummy.eventbrite.com/": {
+	      "@type": "http://schema.org/Event",
+	      "startDate": "2013-04-29T09:00:00",
+	      "endDate": "2013-05-01T17:00:00",
+	      "location": {
+	        "@type": "http://schema.org/Place",
+	        "name": "Covent Garden, London"
+	      },
+	      "offers": [{
+	        "@type": "http://schema.org/Offer",
+	        "name": "Standard Registration",
+	        "price": 1395.00,
+	        "priceCurrency": "GBP",
+	        "validFrom": "2013-03-29",
+	        "validThrough": "2013-04-28",
+	        "inventoryLevel": 13
+	      }, {
+	        "@type": "http://schema.org/Offer",
+	        "name": "Early-Bird Registration",
+	        "price": 1255.00,
+	        "priceCurrency": "GBP",
+	        "validThrough": "2013-03-29",
+	        "inventoryLevel": 13
+	      }]
+    	}
+		}
+	, ids = ['http://dummy.eventbrite.co.uk/']
+	, pages = ['/courses/dummy-course-2013-04-29']
+	, date = new Date('2013-02-13')
+	, $eventTable = $($.eventTable(ids, pages, events, date));
+	;
+	equal($eventTable.find('tbody tr').length, 1, 'the tbody has a single row');
+	equal($eventTable.find('tbody tr td').length, 5, 'the row has five cells');
+	equal($eventTable.find('tbody tr td:eq(0)').text(), '29 Apr - 1 May 2013');
+	equal($eventTable.find('tbody tr td:eq(1)').text(), 'Covent Garden, London');
+	equal($eventTable.find('tbody tr td:eq(2)').text(), '£1,395.00 £1,255.00 (until 29 Mar)');
+	equal($eventTable.find('tbody tr td:eq(3) a').attr('href'), '/courses/dummy-course-2013-04-29');
+	equal($eventTable.find('tbody tr td:eq(4) a').attr('href'), 'http://dummy.eventbrite.co.uk/');
+});
+
 module('date range formatting');
 
 test('date range formatting', function () {
