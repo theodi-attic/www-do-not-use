@@ -94,7 +94,8 @@
 		// create a list of the events that we want to list
 		$(ids).each(function (i) {
 			var id = this
-			,   event = events[id]
+			,   comId = id.replace(/\.co\.uk/, '.com')
+			,   event = events[id] || events[comId]
 			,   page = pages[i]
 			;
 			if (event !== undefined) {
