@@ -70,7 +70,7 @@ function courses_field_default_fields() {
             'view_mode' => 'teaser',
           ),
           'type' => 'entityreference_entity_view',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -139,14 +139,14 @@ function courses_field_default_fields() {
       'bundle' => 'course_instance',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Enter the Eventbrite URL here, in the form http://www.eventbrite.co.uk/event/5449726278 (numeric ID) or http://foobarrubbishevent.eventbrite.co.uk/ (custom subdomain)',
+      'description' => 'Enter the Eventbrite URL here, in the form http://www.eventbrite.com/event/5449726278 (numeric ID) or http://foobarrubbishevent.eventbrite.com/ (custom subdomain)',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -241,7 +241,7 @@ function courses_field_default_fields() {
             'view_mode' => 'teaser',
           ),
           'type' => 'entityreference_entity_view',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -317,7 +317,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -393,7 +393,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -485,7 +485,7 @@ function courses_field_default_fields() {
           'module' => 'entityreference',
           'settings' => array(),
           'type' => 'entityreference_entity_id',
-          'weight' => '8',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -555,7 +555,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -637,7 +637,7 @@ function courses_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -727,7 +727,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -801,7 +801,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '9',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -868,7 +868,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '11',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -935,7 +935,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '10',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1004,7 +1004,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 16,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1071,7 +1071,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '15',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1138,7 +1138,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '12',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1149,7 +1149,7 @@ function courses_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_course_prerequisites',
-      'label' => 'Course Prerequisites',
+      'label' => 'Course prerequisites',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -1205,7 +1205,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '13',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1272,7 +1272,7 @@ function courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '8',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1603,12 +1603,12 @@ function courses_field_default_fields() {
   t('Course Leader(s)');
   t('Course Materials Info');
   t('Course Materials Location');
-  t('Course Prerequisites');
   t('Course Requirements');
   t('Course Summary');
   t('Course Type');
   t('Course length');
-  t('Enter the Eventbrite URL here, in the form http://www.eventbrite.co.uk/event/5449726278 (numeric ID) or http://foobarrubbishevent.eventbrite.co.uk/ (custom subdomain)');
+  t('Course prerequisites');
+  t('Enter the Eventbrite URL here, in the form http://www.eventbrite.com/event/5449726278 (numeric ID) or http://foobarrubbishevent.eventbrite.com/ (custom subdomain)');
   t('Eventbrite URL');
   t('Location');
   t('Photo');
