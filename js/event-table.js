@@ -46,7 +46,7 @@
 			,   price = offer.price
 			,   until = new Date(offer.validThrough)
 			;
-			if (soldOut || (offer.inventoryLevel > 0 && until.toString() === lastBookingDate.toString())) {
+			if (soldOut || (offer.inventoryLevel > 0 && until.toString() >= lastBookingDate.toString())) {
 				countFinalPrice++;
 				if (minFinalPrice === undefined || minFinalPrice > price) {
 					minFinalPrice = price;
@@ -129,7 +129,7 @@
 					if (offer.inventoryLevel > 0) {
 						soldOut = false;
 					}
-					if (lastBookingDate === undefined || until > lastBookingDate) {
+					if (lastBookingDate === undefined || (until > lastBookingDate && (offer.inventoryLevel > 0 || offer.price > 0))) {
 						lastBookingDate = until
 					}
 					return true;
