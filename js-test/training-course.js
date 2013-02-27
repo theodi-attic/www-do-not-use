@@ -366,6 +366,74 @@ test('event with a .com URL', function () {
 	equal($eventTable.find('tbody tr td:eq(4) a').attr('href'), 'http://dummy.eventbrite.co.uk/');
 });
 
+test('event with sold out final ticket', function () {
+	var events = {
+  	"http://opendatalaw20130417.eventbrite.com": {
+	    "@type": "http://schema.org/Event",
+	    "startDate": "2013-04-17T09:30:00+00:00",
+	    "endDate": "2013-04-17T12:30:00+00:00",
+	    "location": {
+	      "@type": "http://schema.org/Place",
+	      "name": "Open Data Institute"
+	    },
+	    "offers": [
+	      {
+	        "@type": "http://schema.org/Offer",
+	        "name": "Earlybird",
+	        "price": 190.0,
+	        "priceCurrency": "GBP",
+	        "validThrough": "2013-03-22T12:00:00+00:00",
+	        "inventoryLevel": 20
+	      },
+	      {
+	        "@type": "http://schema.org/Offer",
+	        "name": "ODI Member",
+	        "price": 180.0,
+	        "priceCurrency": "GBP",
+	        "validThrough": "2013-04-16T12:00:00+00:00",
+	        "inventoryLevel": 20
+	      },
+	      {
+	        "@type": "http://schema.org/Offer",
+	        "name": "Civil servants and charities",
+	        "price": 180.0,
+	        "priceCurrency": "GBP",
+	        "validThrough": "2013-04-16T12:00:00+00:00",
+	        "inventoryLevel": 20
+	      },
+	      {
+	        "@type": "http://schema.org/Offer",
+	        "name": "Full price",
+	        "price": 225.0,
+	        "priceCurrency": "GBP",
+	        "validThrough": "2013-04-16T12:00:00+00:00",
+	        "inventoryLevel": 20
+	      },
+	      {
+	        "@type": "http://schema.org/Offer",
+	        "name": "Free place",
+	        "price": 0.0,
+	        "priceCurrency": "GBP",
+	        "validThrough": "2013-04-17T08:30:00+00:00",
+	        "inventoryLevel": 0
+	      }
+	    ]
+	  }
+	  }
+	, ids = ['http://opendatalaw20130417.eventbrite.com']
+	, pages = ['/courses/open-data-law-and-licensing-2013-04-17']
+	, date = new Date('2013-02-27')
+	, $eventTable = $($.eventTable(ids, pages, events, date));
+	;
+	equal($eventTable.find('tbody tr').length, 1, 'the tbody has a single row');
+	equal($eventTable.find('tbody tr td').length, 5, 'the row has five cells');
+	equal($eventTable.find('tbody tr td:eq(0)').text(), '17 Apr 2013');
+	equal($eventTable.find('tbody tr td:eq(1)').text(), 'Open Data Institute');
+	equal($eventTable.find('tbody tr td:eq(2)').text(), 'from £180.00');
+	equal($eventTable.find('tbody tr td:eq(3) a').attr('href'), '/courses/open-data-law-and-licensing-2013-04-17');
+	equal($eventTable.find('tbody tr td:eq(4) a').attr('href'), 'http://opendatalaw20130417.eventbrite.com');
+});
+
 module('date range formatting');
 
 test('date range formatting', function () {
@@ -466,4 +534,51 @@ test('only free', function () {
 	    ]
 	;
 	equal($.priceOptions(offers, new Date('2013-02-16'), new Date('2013-03-07T15:30:00+00:00'), false), 'free');
+})
+
+test('free sold out', function () {
+	var offers = [
+	  {
+        "@type": "http://schema.org/Offer",
+        "name": "Earlybird",
+        "price": 190.0,
+        "priceCurrency": "GBP",
+        "validThrough": "2013-03-22T12:00:00+00:00",
+        "inventoryLevel": 20
+      },
+      {
+        "@type": "http://schema.org/Offer",
+        "name": "ODI Member",
+        "price": 180.0,
+        "priceCurrency": "GBP",
+        "validThrough": "2013-04-16T12:00:00+00:00",
+        "inventoryLevel": 20
+      },
+      {
+        "@type": "http://schema.org/Offer",
+        "name": "Civil servants and charities",
+        "price": 180.0,
+        "priceCurrency": "GBP",
+        "validThrough": "2013-04-16T12:00:00+00:00",
+        "inventoryLevel": 20
+      },
+      {
+        "@type": "http://schema.org/Offer",
+        "name": "Full price",
+        "price": 225.0,
+        "priceCurrency": "GBP",
+        "validThrough": "2013-04-16T12:00:00+00:00",
+        "inventoryLevel": 20
+      },
+      {
+        "@type": "http://schema.org/Offer",
+        "name": "Free place",
+        "price": 0.0,
+        "priceCurrency": "GBP",
+        "validThrough": "2013-04-17T08:30:00+00:00",
+        "inventoryLevel": 0
+      }
+    ]
+	;
+	equal($.priceOptions(offers, new Date('2013-02-27'), new Date('2013-04-16T12:00:00+00:00'), false), 'from £180.00');
 })
